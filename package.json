@@ -1,0 +1,25 @@
+{
+  "name": "odz_wifimanager",
+  "version": "1.0.0",
+  "description": "Ứng dụng quản lý wifi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tdphatstudy/ODZ_WifiManager.git"
+  },
+  "keywords": [
+    "wifi-manager"
+  ],
+  "author": "Tran Dai Phat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tdphatstudy/ODZ_WifiManager/issues"
+  },
+  "homepage": "https://github.com/tdphatstudy/ODZ_WifiManager#readme",
+  "dependencies": {
+    "electron": "^24.2.0"
+  }
+}
