@@ -1,10 +1,15 @@
 const htmlContent = 
 `
     <div class="title-bar">
-        <div class="close-button"></div>
-        <div class="zoom-button"></div>
-        <div class="hide-button"></div>
-        <div class='title'>ODZ Wifi Manager</div>
+        <div class='title-wrapper'>
+            <div class='logo-program'></div>
+            <div class='title'>ODZ Wifi Manager</div>
+        </div>
+        <div class='control-wrapper'>
+            <div class='hide-btn' id='hide-btn'></div>
+            <div class='zoom-btn' id='zoom-btn'></div>
+            <div class='close-btn' id='close-btn'></div>
+        </div>
     </div>
 `
 module.exports = htmlContent;

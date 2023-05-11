@@ -1,41 +1,58 @@
 .title-bar{
     width: 100%;
     height: 44px;
-    background-color: #e5e5e5;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
+    background-color: #f3f4f2;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 12px;
     display: flex;
     flex-direction: row;
     border: 1px #f4f4f4 solid;
     border-bottom: 1px #cdcdcd solid;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
-.close-button {
-    width: 20px;
-    height: 20px;
-    border-radius: 100rem;
-    border: 1px #f4f4f4;
-    background-color: #ff6259;
-    margin: 0 15px;
+.title-wrapper {
+    display: flex;
+    align-items: center;
+
 }
-.zoom-button {
-    width: 20px;
-    height: 20px;
-    border-radius: 100rem;
-    border: 1px #f4f4f4;
-    background-color: #ffc13d;
-    margin: 0 15px;
+.control-wrapper {
+    display: flex;
+    align-items: center;
 }
-.hide-button {
-    width: 20px;
-    height: 20px;
-    border-radius: 100rem;
-    border: 1px #f4f4f4;
-    background-color: #17c94b;
+.logo-program {
+    height: 30px;
+    width: 30px;
+    background-image: url('../icon/wi-fi_logo_100px.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     margin: 0 15px;
 }
 .title {
-    font-size: 18px;
-    margin: 0 0  0 calc(50vh - 150px);
+    font-size: 20px;
+}
+.control-wrapper > div {
+    margin: 0 15px;
+    height: 20px;
+    width: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 100;
+    cursor: pointer;
+    -webkit-app-region: no-drag;
+    
+}
+.hide-btn {
+    background-image: url('../icon/minimize_window_100px.png');
+    cursor: pointer;
+}
+.zoom-btn {
+    background-image: url('../icon/maximize_button_100px.png');
+    cursor: pointer;
+}
+.close-btn {
+    background-image: url('../icon/delete_100px.png');
+    cursor: pointer;
 }

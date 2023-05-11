@@ -1,5 +1,5 @@
 const htmlContent = 
 `
-    <div class="wifi-info"><div></div></div>
+    <div class="wifi-info">content</div>
 `
 module.exports = htmlContent;

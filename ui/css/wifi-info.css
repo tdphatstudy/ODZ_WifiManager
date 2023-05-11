@@ -2,5 +2,6 @@
     height: auto;
     width: auto;
     flex: 1;
-    background-color: red;
+    background-color: #ffffff;
+    border-bottom-right-radius: 10px;
 }
