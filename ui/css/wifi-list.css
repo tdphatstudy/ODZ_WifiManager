@@ -1,5 +1,5 @@
 .wifi-list {
-    height: auto;
+    height: calc(100vh - 44px);
     width: 35%;
     background-image: linear-gradient(to top right, rgba(124, 155, 164, 0.9), rgba(179, 203, 210, 0.9), rgba(203, 221, 226, 0.9),rgba(247, 247, 247, 0.9));
     border-left: 1px solid rgba(255,255,255, 0.3);
@@ -13,7 +13,7 @@
 }
 .wifi-list-header {
     width: 95%;
-    height: 7%;
+    height: 15%;
     background-color: transparent;
     display: flex;
     justify-content: space-between;
@@ -34,11 +34,13 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    -webkit-app-region: no-drag;
+    cursor: pointer;
 }
 .wifi-list-body {
-
     width: 100%;
     height: 80%;
+    max-height: 80%;
     background-color: transparent;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -46,6 +48,7 @@
     flex-direction: column;
     align-items: center;
     -webkit-app-region: no-drag;
+    flex-grow: 1;
 }
 .wifi-list-body::-webkit-scrollbar{
     width: 10px;
@@ -76,7 +79,7 @@
     background-color: transparent;
     position: relative;
     right: 10%;
-    
+    max-width: 50%;
 }
 .wifi-name {
     background-color: transparent;
@@ -92,6 +95,30 @@
     height: 30px;
     width: 30px;
     background-image: url('../icon/signal_strong_100px.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.wifi-normal {
+    height: 30px;
+    width: 30px;
+    background-image: url('../icon/signal_normal_100px.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.wifi-weak {
+    height: 30px;
+    width: 30px;
+    background-image: url('../icon/signal_weak_100px.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.wifi-very-weak {
+    height: 30px;
+    width: 30px;
+    background-image: url('../icon/no_connection_100px.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
