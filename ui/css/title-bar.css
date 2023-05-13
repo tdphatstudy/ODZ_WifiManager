@@ -14,20 +14,20 @@
 .title-wrapper {
     display: flex;
     align-items: center;
-
 }
 .control-wrapper {
     display: flex;
     align-items: center;
 }
 .logo-program {
-    height: 30px;
-    width: 30px;
+    height: 140px;
+    width: 200px;
     background-image: url('../icon/wi-fi_logo_100px.png');
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     margin: 0 15px;
+    margin-top: -10px;
 }
 .title {
     font-size: 20px;
@@ -38,11 +38,10 @@
     width: 20px;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     z-index: 100;
     cursor: pointer;
     -webkit-app-region: no-drag;
-    
 }
 .hide-btn {
     background-image: url('../icon/minimize_window_100px.png');

@@ -1,0 +1,158 @@
+.background-wrapper {
+    background-color: #eeeeee;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    border-radius: inherit;
+}
+.logo-background {
+    height: 100px;
+    width: 230px;
+    background-image: url('../icon/wi-fi_logo_100px.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.icon-detail-background {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    height: auto;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.icon-detail-background > * {
+    height: 40px;
+    width: 40px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.logan-background {
+    margin: 0px 0px 20px 0px;
+    font-size: 16px;
+    font-weight: 600;
+    max-width: 85%;
+}
+.description-background {
+    margin-top: 50px;
+    font-size: 16px;
+    max-width: 85%;
+    text-align: center;
+}
+.icon-detail-background > .manager-icon{
+    background-image: url('../icon/maintenance_100px.png');
+}
+.icon-detail-background > .share-icon{
+    background-image: url('../icon/share_rounded_100px.png');
+}
+.icon-detail-background > .qrcode-icon{
+    background-image: url('../icon/qr_code_100px.png');
+}
+.icon-detail-background > .opensoure-icon{
+    background-image: url('../icon/open_source_100px.png');
+}
+.wifi-animation-icon {
+    height: 200px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(35%);
+}
+.dot {
+    width: 0;
+    border-radius: 50%;
+    border: 20px solid #0084FF ;
+    margin-top: 10px;
+    margin: 15px 15px;
+}
+.wifi-icon {
+    border-radius: 50%;
+    border: 15px solid;
+    border-color:  #0084FF  transparent transparent transparent;   
+    margin: 15px 15px;
+}
+.big {
+    animation-name: wifi-animation-3;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+.normal {
+    animation-name: wifi-animation-2;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+.small {
+    animation-name: wifi-animation-1;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+@media screen and (min-width: 1000px) {
+    .logan-background {
+        font-size: 24px;
+    }
+    .wifi-animation-icon {
+        margin: 50px 0;
+    }
+    .dot {
+        border: 20px solid #0084FF ;
+        margin: 25px 25px;
+        
+    }
+    .wifi-icon {
+        border: 20px solid;
+        border-color:  #0084FF  transparent transparent transparent;   
+        margin: 30px 30px;
+    }
+    .description-background  {
+        position: absolute;
+        font-size: 24px;
+        bottom: calc(30px + 80px);
+    }
+    .icon-detail-background {
+        position: absolute; 
+        bottom: 30px;
+    }
+    
+}
+@keyframes wifi-animation-1 {
+    0% {
+        border-color:  #0084FF  transparent transparent transparent;   
+    }
+    20%{
+        border-color: rgb(201, 201, 201) transparent transparent transparent; 
+    }
+    100% {
+        border-color:  #0084FF  transparent transparent transparent;   
+    }
+    
+}
+@keyframes wifi-animation-2 {
+    0% {
+        border-color:  #0084FF  transparent transparent transparent;   
+    }
+    50%{
+        border-color: rgb(201, 201, 201) transparent transparent transparent;  
+    }
+    100% {
+        border-color:  #0084FF  transparent transparent transparent;   
+    }
+}
+@keyframes wifi-animation-3 {
+    0% {
+        border-color:  #0084FF  transparent transparent transparent;   
+    }
+    80%{
+        border-color: rgb(201, 201, 201) transparent transparent transparent;  
+    }
+    100% {
+        border-color:  #0084FF  transparent transparent transparent;   
+    }
+    
+}

@@ -1,0 +1,71 @@
+.connection-wrapper {
+    background-color: #eeeeee;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    display: flex;
+    flex-direction: row;
+}
+.label-part-connection {
+    width: 30%;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 15px;
+    margin-top: 7%;
+}
+.label-part-connection > div {
+    font-size: 16px;
+    margin: 12px 0px;
+
+}
+
+.value-part-connection {
+    width: 70%;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 7%;
+
+}
+.value-part-connection > * {
+    font-size: 16px;
+    margin: 12px 0px;
+
+}
+#value-ssid-connection {
+    font-weight: bold;
+}
+#password-text:focus {
+    outline-color: #2e98eb !important;
+}
+#password-text {
+    height: 21px;
+    font-size: 16px;
+    font-weight: 400;
+    box-sizing: border-box;
+    font-family: "Segoe UI Regular", sans-serif;
+    -webkit-app-region: no-drag;
+}
+@media screen and (min-width: 1000px) {
+    .label-part-connection > div {
+        font-size: 20px;
+        margin: 10px 0px;
+    }
+    .value-part-connection{
+        padding-left: 30px;
+    }
+    .value-part-connection > * {
+        font-size: 20px;
+        margin: 10px 0px;
+    }
+    #password-text {
+        height: 27px;
+        font-size: 18px !important;
+        box-sizing: border-box;
+    }
+}

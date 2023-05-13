@@ -3,7 +3,6 @@ const htmlContent =
     <div class="title-bar">
         <div class='title-wrapper'>
             <div class='logo-program'></div>
-            <div class='title'>ODZ Wifi Manager</div>
         </div>
         <div class='control-wrapper'>
             <div class='hide-btn' id='hide-btn'></div>

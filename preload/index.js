@@ -15,7 +15,12 @@ let profileWifi = {
     title: 'Wi-Fi Profile',
     list: []
 }
-
+const descriptions = ['Ứng dụng quản lý wifi tiện lợi, dễ dàng sử dụng.',
+'Kết nối wifi tự động một cách nhanh chóng và dễ dàng.',
+'Quét và kết nối wifi chỉ với vài thao tác đơn giản, không mất thời gian.',
+'Chia sẻ mật khẩu wifi với bạn bè qua mã QR tiện lợi và an toàn, không cần phải ghi chép lại.',
+'Xem mật khẩu wifi đã kết nối trước đó để dễ dàng kết nối lại vào lần sau, không cần phải nhớ.'];
+let indexDesciption = 0;
 
 // event titlebar
 const enventWindow = () => {
@@ -44,18 +49,32 @@ const enventWindow = () => {
     })
 }
 
+const animationDescription = () => {
+    console.log('helo');
+    const descriptionBackground =document.getElementsByClassName('description-background')[0];
+    if (descriptionBackground!= undefined) {
+        descriptionBackground.innerHTML = descriptions[indexDesciption];
+        if (indexDesciption < descriptions.length - 1) {
+            indexDesciption++;
+        } else {
+            indexDesciption = 0; 
+        }
+    }
+}
+
+
 const renderWifiListTitle = ()=>{
     const wifiTitle = document.getElementsByClassName('wifi-list-title')[0];
     if (mode === 'profile') {
         wifiTitle.innerHTML = profileWifi.title;
-        clearTimeout(renderWifiListScan);
+        clearInterval(renderWifiListScan);
         renderWifiListProfile();
-        setTimeout(renderWifiListProfile, 10000);
+        setInterval(renderWifiListProfile, 1000);
     } else {
         wifiTitle.innerHTML = scanwifi.title;
-        clearTimeout(renderWifiListProfile);
+        clearInterval(renderWifiListProfile);
         renderWifiListScan();
-        setTimeout(renderWifiListScan, 10000);
+        setInterval(renderWifiListScan, 1000);
     }
 }
 const renderWifiListScan = () => {
@@ -76,7 +95,8 @@ const renderWifiListScan = () => {
             scanwifi.list.sort((a, b) => {return b.signal_level - a.signal_level});
             wifilist.innerHTML = '';
             scanwifi.list.forEach((value, index)=> {
-                let signal = '';
+                if (value !== undefined) {
+                    let signal = '';
                 if (value.signal_level <= 0 && value.signal_level >= -50) {
                     signal = 'wifi-strong';
                 } else if (value.signal_level < -50 && value.signal_level >= -70) {
@@ -87,6 +107,7 @@ const renderWifiListScan = () => {
                     signal = 'wifi-very-weak';
                 }
                 wifilist.innerHTML+= wifi_item(value.ssid, value.security, signal, index);
+                }
             })
         }
         }
@@ -114,15 +135,11 @@ const renderWifiListProfile = () => {
             wifilist.innerHTML+= wifi_item(value.ssid, value.security, signal, index);
         })
     }
-    
 }
-
 const initWifi = () => {
     wifi.init({
         iface: null
       })};
-
-
 window.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('root');
     // render
@@ -130,15 +147,9 @@ window.addEventListener('DOMContentLoaded', () => {
     const wrapperContent = contentHTML.getElementsByClassName('content')[0];
     wrapperContent.innerHTML = wifiList + infoScreen;
     root.innerHTML = titleBar + wrapperContent.outerHTML;
-
     initWifi();
     enventWindow();
+    setInterval(animationDescription, 10000)
     renderWifiListTitle();
 
-    
-    
-    
-    
-  
-    
 });
