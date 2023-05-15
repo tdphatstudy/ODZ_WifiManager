@@ -23,6 +23,7 @@
   "dependencies": {
     "electron": "^24.2.0",
     "node-wifi": "^2.0.16",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "qrcode": "^1.5.3"
   }
 }

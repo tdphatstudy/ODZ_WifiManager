@@ -1,6 +1,5 @@
-const connection = require('./backgroundScreen');
 const htmlContent = 
 `
-    <div class="wifi-info">${connection}</div>
+    <div class="wifi-info"> </div>
 `
 module.exports = htmlContent;

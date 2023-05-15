@@ -3,10 +3,18 @@ const titleBar = require('../ui/render/titleBar.js');
 let content = require('../ui/render/content.js');
 const wifiList = require('../ui/render/wifiList.js');
 const infoScreen = require('../ui/render/inforSrceen.js');
+const backgroundScreen = require('../ui/render/backgroundScreen.js');
 const wifi = require('node-wifi');
 const  event_window = require('./event_windows.js');
 const wifi_item = require('../ui/render/wifiScanItem.js');
-let mode = 'profile';
+const wifi_profile_item = require('../ui/render/wifiProfileItem.js')
+const handle = require('../commands/window/handle.js')
+const QRCode = require('qrcode');
+const infoScreenState = 'background';
+
+
+
+let mode = 'scan';
 let scanwifi = {
     title: 'Wi-Fi Scan',
     list: []
@@ -21,6 +29,10 @@ const descriptions = ['Ứng dụng quản lý wifi tiện lợi, dễ dàng s�
 'Chia sẻ mật khẩu wifi với bạn bè qua mã QR tiện lợi và an toàn, không cần phải ghi chép lại.',
 'Xem mật khẩu wifi đã kết nối trước đó để dễ dàng kết nối lại vào lần sau, không cần phải nhớ.'];
 let indexDesciption = 0;
+let intervalManager = {
+    profile: null,
+    scan: null
+}
 
 // event titlebar
 const enventWindow = () => {
@@ -50,7 +62,6 @@ const enventWindow = () => {
 }
 
 const animationDescription = () => {
-    console.log('helo');
     const descriptionBackground =document.getElementsByClassName('description-background')[0];
     if (descriptionBackground!= undefined) {
         descriptionBackground.innerHTML = descriptions[indexDesciption];
@@ -67,14 +78,14 @@ const renderWifiListTitle = ()=>{
     const wifiTitle = document.getElementsByClassName('wifi-list-title')[0];
     if (mode === 'profile') {
         wifiTitle.innerHTML = profileWifi.title;
-        clearInterval(renderWifiListScan);
+        clearInterval(intervalManager.scan);
         renderWifiListProfile();
-        setInterval(renderWifiListProfile, 1000);
+        intervalManager.profile =  setInterval(renderWifiListProfile, 60000);
     } else {
         wifiTitle.innerHTML = scanwifi.title;
-        clearInterval(renderWifiListProfile);
+        clearInterval(intervalManager.profile);
         renderWifiListScan();
-        setInterval(renderWifiListScan, 1000);
+        intervalManager.scan = setInterval(renderWifiListScan, 10000);
     }
 }
 const renderWifiListScan = () => {
@@ -83,7 +94,6 @@ const renderWifiListScan = () => {
         if (error) {
           console.log(error);
         } else {
-            console.log(networks);
           scanwifi.list = networks.map((value)=> {
             if (value.ssid.length != 0) {
                 return value;
@@ -111,31 +121,38 @@ const renderWifiListScan = () => {
             })
         }
         }
-      });
-    
-    
+      });   
 }
 const renderWifiListProfile = () => {
     const wifilist = document.getElementsByClassName('wifi-list-body')[0];
-    if (profileWifi.list.length === 0) {
-        wifilist.innerHTML = 'NONE WIFI';
-    } else {
-        wifilist.innerHTML = '';
-        profileWifi.list.forEach((value, index)=> {
-            const signal = '';
-            if (value.signal_level <= 0 && value.signal_level >= -50) {
-                signal = 'wifi-strong';
-            } else if (value.signal_level < -50 && value.signal_level >= -70) {
-                signal = 'wifi-normal';
-            } else if (value.signal_level < -70 && value.signal_level >= -90) {
-                signal = 'wifi-weak';
-            } else if (value.signal_level < -90) {
-                signal = 'wifi-very-weak';
-            }
-            wifilist.innerHTML+= wifi_item(value.ssid, value.security, signal, index);
-        })
-    }
+    handle.get_profiles().then((profiles) => {
+        profileWifi.list = profiles;
+        if (profileWifi.list.length === 0) {
+            wifilist.innerHTML = 'NONE WIFI';
+        } else {
+            wifilist.innerHTML = '';
+            profileWifi.list.forEach((value, index)=> {
+                wifilist.innerHTML+= wifi_profile_item(value, index);
+            })
+        }
+    });
+    
 }
+
+const renderQR = async(ssid, security, pass, isHidden) => {
+    const qrdom =document.getElementById('value-wifiqr-profile');
+    QRCode.toCanvas(qrdom, `WIFI:T:${security};S:${ssid};P:${pass};H:${isHidden};;`,(error)=> {
+        if (error) console.log(error)
+    })
+}
+const renderInfoScreen = ()=> {
+    const backgroundDOM = document.getElementsByClassName('wifi-info')[0];
+    if (infoScreenState === 'background') {
+       backgroundDOM.innerHTML = backgroundScreen;
+    }
+
+}
+
 const initWifi = () => {
     wifi.init({
         iface: null
@@ -151,5 +168,6 @@ window.addEventListener('DOMContentLoaded', () => {
     enventWindow();
     setInterval(animationDescription, 10000)
     renderWifiListTitle();
+    renderInfoScreen();
 
 });

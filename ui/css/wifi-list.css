@@ -18,7 +18,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.5)
+    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
 }
 .wifi-list-title {
     margin-left: 10px;
@@ -85,6 +85,31 @@
     background-color: transparent;
     font-size: 14;
     font-weight: bold;
+}
+.wifi-profile-item {
+    width: 95%;
+    height: auto; 
+    display: flex;
+    align-items: center ;
+    border: 1px solid rgba(241, 235, 235, 0.2);
+    border-radius: 10px;
+    box-shadow: -5px 0px 20px -10px black;
+    margin: 10px;
+    justify-content: space-between;
+    padding: 10px 0;  
+}
+.wifi-profile-item > .wifi-detail-button {
+    margin-right: 20px;
+}
+.wifi-profile-view {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    position: relative;
+    max-width: 70%;
+    font-size: 14;
+    font-weight: bold;
+    margin-left: 20px;
 }
 .wifi-sercurity {
     font-size: 12;
