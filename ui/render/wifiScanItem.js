@@ -1,7 +1,7 @@
 const wifi_item = function(wifiname, wifi_sercurity,wifi_signal, id){
 
     return  `
-<div class="wifi-scan-item" id="${id}">
+
                 <div class="${wifi_signal}">
                 </div>
                 <div class="wifi-view">
@@ -14,7 +14,6 @@ const wifi_item = function(wifiname, wifi_sercurity,wifi_signal, id){
                 </div>
                 <div class="wifi-detail-button">
                 </div>
-            </div>
     `;
 };
 module.exports = wifi_item

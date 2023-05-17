@@ -71,7 +71,7 @@
     margin: 10px;
     justify-content: space-around;
     padding: 10px 0;
-    
+    cursor: pointer;
 }
 .wifi-view {
     display: flex;
@@ -97,6 +97,7 @@
     margin: 10px;
     justify-content: space-between;
     padding: 10px 0;  
+    cursor: pointer;
 }
 .wifi-profile-item > .wifi-detail-button {
     margin-right: 20px;

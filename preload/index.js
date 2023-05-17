@@ -4,13 +4,15 @@ let content = require('../ui/render/content.js');
 const wifiList = require('../ui/render/wifiList.js');
 const infoScreen = require('../ui/render/inforSrceen.js');
 const backgroundScreen = require('../ui/render/backgroundScreen.js');
+const profileScreen   = require('../ui/render/profilePanel.js');
+const scanScreen = require('../ui/render/connectPanel.js')
 const wifi = require('node-wifi');
 const  event_window = require('./event_windows.js');
 const wifi_item = require('../ui/render/wifiScanItem.js');
 const wifi_profile_item = require('../ui/render/wifiProfileItem.js')
 const handle = require('../commands/window/handle.js')
 const QRCode = require('qrcode');
-const infoScreenState = 'background';
+let infoScreenState = 'background';
 
 
 
@@ -99,6 +101,7 @@ const renderWifiListScan = () => {
                 return value;
             }
           });
+          console.log(scanwifi.list)
           if (scanwifi.list.length === 0) {
             wifilist.innerHTML = 'NONE WIFI';
         } else {
@@ -116,7 +119,17 @@ const renderWifiListScan = () => {
                 } else if (value.signal_level < -90) {
                     signal = 'wifi-very-weak';
                 }
-                wifilist.innerHTML+= wifi_item(value.ssid, value.security, signal, index);
+                const  wifiItem = wifi_item(value.ssid, value.security, signal, index);
+                const wrapper = document.createElement('div')
+                wrapper.innerHTML = wifiItem;
+                wrapper.classList.add('wifi-scan-item')
+                wifilist.appendChild(wrapper);
+                console.log(value);
+                wrapper.addEventListener('click', ()=>{
+                    infoScreenState = 'scan';
+                    renderInfoScreen(value);
+
+                })
                 }
             })
         }
@@ -132,7 +145,26 @@ const renderWifiListProfile = () => {
         } else {
             wifilist.innerHTML = '';
             profileWifi.list.forEach((value, index)=> {
-                wifilist.innerHTML+= wifi_profile_item(value, index);
+                const wifItem = wifi_profile_item(value, index);
+                const wrapper = document.createElement('div')
+                wrapper.innerHTML = wifItem;
+                wrapper.classList.add('wifi-profile-item')
+                wifilist.appendChild(wrapper);
+                wrapper.addEventListener('click', ()=> {
+                    handle.get_detail(value).then((detail) => {
+                        infoScreenState = 'profile';
+                        let data = {};
+                        data.ssid = detail.find((index) => {if(index.key === 'SSID name') {return index;} }).value;
+                        data.security = detail.find((index) => {if(index.key === "Authentication") {return index} }).value;
+                        data.pass = detail.find((index) => {if(index.key === "Key Content") {return index;} })?.value;
+                
+                        data.isHidden = false;
+                        renderInfoScreen(data);
+                    })
+                })
+                
+               
+
             })
         }
     });
@@ -145,10 +177,25 @@ const renderQR = async(ssid, security, pass, isHidden) => {
         if (error) console.log(error)
     })
 }
-const renderInfoScreen = ()=> {
+const renderInfoScreen = (data)=> {
     const backgroundDOM = document.getElementsByClassName('wifi-info')[0];
     if (infoScreenState === 'background') {
        backgroundDOM.innerHTML = backgroundScreen;
+    } else if (infoScreenState === 'profile'){
+        backgroundDOM.innerHTML = profileScreen(data.ssid, data.security, data.pass);
+        renderQR(data.ssid, data.security, data.pass, data.isHidden);
+    } else if (infoScreenState === 'scan') {
+        let signal = ''
+        if (data.signal_level <= 0 && data.signal_level >= -50) {
+            signal = `Strong`;
+        } else if (data.signal_level < -50 && data.signal_level >= -70) {
+            signal = `Normal`;
+        } else if (data.signal_level < -70 && data.signal_level >= -90) {
+            signal = 'Weak;';
+        } else if (data.signal_level < -90) {
+            signal = 'Very Weak';
+        }
+        backgroundDOM.innerHTML = scanScreen(data.ssid, signal, data.channel, data.security, data.mac);
     }
 
 }
@@ -169,5 +216,6 @@ window.addEventListener('DOMContentLoaded', () => {
     setInterval(animationDescription, 10000)
     renderWifiListTitle();
     renderInfoScreen();
-
+    
+    
 });
