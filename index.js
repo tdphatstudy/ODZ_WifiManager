@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow, ipcMain, dialog } = require('electron')
 const path = require('path')
 let isZoom = false;
 
@@ -36,7 +36,23 @@ function createWindow () {
       isZoom = true
     }
     
-
+  })
+  ipcMain.handle('succes_connection', (event, ssid)=> {
+    dialog.showMessageBox({
+      type: 'info',
+      title: 'Kết nối thành công',
+      message: 'Kết nối với Wi-Fi ' + ssid + ' thành công.',
+      buttons: ['OK']
+    });
+    
+  })
+  ipcMain.handle('warning_connection', ()=> {
+    dialog.showMessageBox({
+      type: 'warning',
+      title: 'Kết nối thất bại',
+      message: 'Kết nối với Wi-Fi thất bại.',
+      buttons: ['OK']
+    });
   })
 }
 

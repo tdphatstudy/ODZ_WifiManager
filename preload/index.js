@@ -16,6 +16,7 @@ let infoScreenState = 'background';
 
 
 
+
 let mode = 'scan';
 let scanwifi = {
     title: 'Wi-Fi Scan',
@@ -47,7 +48,7 @@ const enventWindow = () => {
         event_window.close();
       });
     hideBtn.addEventListener('click', ()=> {
-        event_window.hide();
+        event_window.hide()
     })
     zoomBtn.addEventListener('click', ()=>{
         event_window.zoom();
@@ -101,7 +102,6 @@ const renderWifiListScan = () => {
                 return value;
             }
           });
-          console.log(scanwifi.list)
           if (scanwifi.list.length === 0) {
             wifilist.innerHTML = 'NONE WIFI';
         } else {
@@ -124,11 +124,9 @@ const renderWifiListScan = () => {
                 wrapper.innerHTML = wifiItem;
                 wrapper.classList.add('wifi-scan-item')
                 wifilist.appendChild(wrapper);
-                console.log(value);
                 wrapper.addEventListener('click', ()=>{
                     infoScreenState = 'scan';
                     renderInfoScreen(value);
-
                 })
                 }
             })
@@ -196,6 +194,19 @@ const renderInfoScreen = (data)=> {
             signal = 'Very Weak';
         }
         backgroundDOM.innerHTML = scanScreen(data.ssid, signal, data.channel, data.security, data.mac);
+        const buttonConnect  = backgroundDOM.querySelector('#connection-button')
+        buttonConnect.addEventListener('click', ()=>{
+            const ssid = document.getElementById('value-ssid-connection');
+            const pass = document.getElementById('password-text').value;
+            wifi.connect({ ssid: ssid.innerText, password: pass}, (error) => {
+                console.log(error)
+                if (error) {
+                  event_window.show_warning_connect()
+                } else {
+                  event_window.show_success_connect(ssid.innerHTML);
+                }
+              });
+        })
     }
 
 }
@@ -216,6 +227,8 @@ window.addEventListener('DOMContentLoaded', () => {
     setInterval(animationDescription, 10000)
     renderWifiListTitle();
     renderInfoScreen();
+    
+
     
     
 });

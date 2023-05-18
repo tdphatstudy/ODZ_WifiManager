@@ -51,6 +51,15 @@
     font-family: "Segoe UI Regular", sans-serif;
     -webkit-app-region: no-drag;
 }
+#connection-button {
+    padding: 8px 35px;
+    border-radius: 7px;
+    background-color:  #0167be;
+    color: #ffffff;
+    border: none !important;
+    -webkit-app-region: no-drag;
+    cursor: pointer;
+}
 @media screen and (min-width: 1000px) {
     .label-part-connection > div {
         font-size: 20px;

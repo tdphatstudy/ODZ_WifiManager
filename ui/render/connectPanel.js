@@ -16,7 +16,7 @@ const htmlContent = (ssid, signal, channel, sercurity, mac) => {
             <div id='value-channel-connection'>${channel}</div>
             <div id='value-sercurity-connection'>${sercurity}</div>
             <div id='value-mac-connection'>${mac}</div>
-            
+            <input type="button" value="Connect" id='connection-button' />
         </div>
     </div>
     `;
