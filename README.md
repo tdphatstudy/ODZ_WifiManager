@@ -33,7 +33,7 @@ Chúng tôi phát triển phần mềm dựa trên các thư viện, ngôn ngữ
   - [ ] Quét QR để kết nối wifi.
 
 ##  Cài đặt
-### Cài đặt bằng github.
+### Cài đặt bằng zip.
   - Bước 1: Nhấn **Code** -->  **Download ZIP**
  ![image](https://github.com/tdphatstudy/ODZ_WifiManager/assets/124871402/afd1b8d6-4b20-452a-8dc7-10629f703ac9)
 
@@ -45,6 +45,28 @@ Chúng tôi phát triển phần mềm dựa trên các thư viện, ngôn ngữ
   `npm install`
   - Bước 5: Chạy dự án.
   `npm start`
+## Hướng dẫn sử dụng.
+### Giao diện sử dụng
+![image](https://github.com/tdphatstudy/ODZ_WifiManager/assets/124871402/5959616c-facf-492a-9705-90b2e362e943)
+
+### Mode và chuyển mode
+Trong ứng dụng, có 2 chế độ **Wifi Scan** (Quét những wifi mà máy tính bắt  sóng được) và **Wifi profile** (Hiện thị wifi đã từng kết nối) nhấn ![image](https://github.com/tdphatstudy/ODZ_WifiManager/assets/124871402/2b2bc3b4-e69b-4c7d-97ff-04a463a957d0) để chuyển giữa 2 mode.
+
+### Kết nối với wifi.
+
+  - Bước 1: Trong **Wifi Scan** mode, Nhấn vào wifi cần kết nối.
+ ![image](https://github.com/tdphatstudy/ODZ_WifiManager/assets/124871402/1ffe71d0-f591-4bbd-b8bd-1540f353e8ee)
+
+  - Bước 2: Thông tin wifi hiện lên, nhập mật khẩu vào ô password.
+ ![image](https://github.com/tdphatstudy/ODZ_WifiManager/assets/124871402/e7782742-761c-427a-94fd-343c540f08b1)
+
+  - Bước 3: Nhấn Connect. Nếu thông báo thành công nghĩa là bạn đã kết nối thành công
+### Chia sẻ wifi.
+
+  - Bước 1: Chuyển sang **Wifi Profile** mode.
+  - Bước 2: Nhấn vào wifi cần chia sẻ. Thông tin sẽ hiện lên màn hình bao gồm: ssid, loại bảo mật, mật khẩu và QR Code để quét.
+![image](https://github.com/tdphatstudy/ODZ_WifiManager/assets/124871402/8b63a968-4531-4e24-acc8-2528574b950a)
+
 
 
 
