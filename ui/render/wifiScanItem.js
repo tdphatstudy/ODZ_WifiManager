@@ -1,19 +1,17 @@
-const wifi_item = function(wifiname, wifi_sercurity,wifi_signal, id){
-
-    return  `
-
-                <div class="${wifi_signal}">
-                </div>
-                <div class="wifi-view">
-                    <div class="wifi-name">
-                        ${wifiname}
-                    </div>
-                    <div class="wifi-sercurity">
-                        ${wifi_sercurity}
-                    </div>
-                </div>
-                <div class="wifi-detail-button">
-                </div>
-    `;
+const wifi_item = function (wifiname, wifi_sercurity, wifi_signal, id) {
+  return `
+    <div class="${wifi_signal}">
+    </div>
+    <div class="wifi-view">
+        <div class="wifi-name">
+            ${wifiname}
+        </div>
+        <div class="wifi-sercurity">
+            ${wifi_sercurity}
+        </div>
+    </div>
+    <div class="wifi-detail-button">
+    </div>
+  `;
 };
-module.exports = wifi_item
+module.exports = wifi_item;

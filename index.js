@@ -20,12 +20,15 @@ function createWindow () {
 
   win.loadFile('ui/index.html')
   win.setResizable(false)
+
   app.on('activate', () => {
     win.show()
   })
+
   ipcMain.handle('hide', ()=>{
     win.minimize();
   })
+
   ipcMain.handle('zoom', ()=>{
     if (isZoom === true) {
       win.unmaximize();
@@ -37,6 +40,7 @@ function createWindow () {
     }
     
   })
+
   ipcMain.handle('succes_connection', (event, ssid)=> {
     dialog.showMessageBox({
       type: 'info',
@@ -46,6 +50,7 @@ function createWindow () {
     });
     
   })
+  
   ipcMain.handle('warning_connection', ()=> {
     dialog.showMessageBox({
       type: 'warning',

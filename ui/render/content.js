@@ -1,6 +1,6 @@
 const htmlContent =    
 `
-    <div class='content'></div>
+  <div class='content'></div>
 `;
 
 module.exports = htmlContent;

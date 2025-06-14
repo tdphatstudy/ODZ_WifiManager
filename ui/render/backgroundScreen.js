@@ -1,5 +1,4 @@
-const htmlContent = 
-`
+const htmlContent = `
 <div class="background-wrapper">
     <div class="logo-background"> </div> 
     <div class="logan-background"> Quản lý wifi một cách dễ dàng với ODZ Wifi Manager </div>
