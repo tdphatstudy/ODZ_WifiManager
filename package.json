@@ -21,9 +21,15 @@
   },
   "homepage": "https://github.com/tdphatstudy/ODZ_WifiManager#readme",
   "dependencies": {
-    "electron": "^24.2.0",
     "node-wifi": "^2.0.16",
-    "nodemon": "^2.0.22",
     "qrcode": "^1.5.3"
+  },
+  "devDependencies": {
+    "electron": "^24.2.0",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "nodemon": "^2.0.22",
+    "prettier": "^3.8.1"
   }
 }

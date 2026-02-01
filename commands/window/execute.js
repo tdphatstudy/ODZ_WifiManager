@@ -1,9 +1,15 @@
 const exec = require('child_process').exec;
 
-function execute(command, callback) {
-    exec(command, (error, stdout, stderr) => { 
-        callback(stdout); 
+function execute(command) {
+  return new Promise((resolve, reject) => {
+    exec(command, (error, stdout, stderr) => {
+      if (error) {
+        reject(error);
+        return;
+      }
+      resolve(stdout);
     });
+  });
 };
 
 module.exports = execute;
